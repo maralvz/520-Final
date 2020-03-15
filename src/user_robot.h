@@ -5,12 +5,24 @@
 
 using namespace enviro;
 
+// Class that detects and responds to keyboard inputs. Actuates
+// the manual robot based on inputs. 
 class userRobotController : public Process, public AgentInterface {
 
     public:
     userRobotController() : Process(), AgentInterface() {}
 
     void init() {
+        watch("grounded", [&](Event e) {
+            label("I'm grounded", 10, 0);
+            teleport(-305, 320, 0);
+        });
+        watch("transport", [&](Event e) {
+            teleport(-305, 320, 0);
+        });
+        watch("madeit", [&](Event e) {
+            label("I'm safe", -10, 10);
+        });
         watch("keyup", [&](Event &e) {
             auto keyB = e.value()["key"].get<std::string>();
             if (keyB == "t") {

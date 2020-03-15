@@ -8,11 +8,19 @@
 using namespace enviro;
 
 namespace {
+    // Class that controls the auto-bot moving through the lower
+    // maze. 
     class MovingForward : public State, public AgentInterface {
         public:
         void entry(const Event& e) {}
         void during() {
-            track_velocity(10,0);
+            cpVect pos = position();
+            double xCoord = pos.x;
+            double yCoord = pos.y;
+            if (xCoord > 300 && yCoord > -40 ) {
+                emit(Event("grounded"));
+            }
+            track_velocity(15,0);
             if (sensor_value(0) < 30 || sensor_value(1) < 15 || sensor_value(2) < 15) {
                 emit(Event(ring));
             }
@@ -27,8 +35,8 @@ namespace {
     class Rotating : public State, public AgentInterface {
         public:
         void entry(const Event& e) {
-            rotVela = 1;
-            rotVelb = -1;
+            rotVela = 2;
+            rotVelb = -2;
         }
         void during() {
             if (sensor_value(1) == sensor_value(2)) {

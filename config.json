@@ -13,7 +13,7 @@
             "position": {
                 "x": -305, 
                 "y": 320, 
-                "theta": -1.57
+                "theta": 0
             }
         },
         {
@@ -24,7 +24,25 @@
                 "y": -320, 
                 "theta": 0
             }
-        }    
+        },
+        {
+            "definition": "defs/teleport_agent.json",
+            "style": { "fill": "brown", "stroke": "black" },
+            "position": {
+                "x": 330, 
+                "y": -6, 
+                "theta": -1.57
+            }
+        },
+        {
+            "definition": "defs/finish_agent.json",
+            "style": { "fill": "green", "stroke": "black" },
+            "position": {
+                "x": 330, 
+                "y": 6, 
+                "theta": 1.57
+            }
+        }      
     ],
 
     "statics": [
@@ -344,7 +362,7 @@
             ]
         },
         {
-            "style": { "fill": "green", "stroke": "none" },
+            "style": { "fill": "black", "stroke": "none" },
             "shape": [
                 { "x": 250, "y": -5 },
                 { "x": 250,  "y": 5 },

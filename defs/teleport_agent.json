@@ -1,0 +1,19 @@
+{
+    "name": "teleportAgent",
+    "type": "dynamic",
+    "description": "Teleports from one maze to the other",
+    "shape": [
+        { "x": -3, "y": -40 },
+        { "x": -3, "y": 40 },
+        { "x": 3, "y": 40 },
+        { "x": 3, "y": -40 }
+    ],
+    "friction": {
+      "collision": 500,
+      "linear": 500,
+      "rotational": 2000
+    },
+    "sensors": [],
+    "mass": 100,    
+    "controller": "lib/teleport_agent.so"
+}

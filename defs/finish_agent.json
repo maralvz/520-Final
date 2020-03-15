@@ -1,0 +1,19 @@
+{
+    "name": "finishAgent",
+    "type": "dynamic",
+    "description": "Replace this string with a description",
+    "shape": [
+        { "x": -20, "y": 30 },
+        { "x": 20, "y": 30 },
+        { "x": 20, "y": -30 },
+        { "x": -20, "y": -30 }
+    ],
+    "friction": {
+      "collision": 500,
+      "linear": 500,
+      "rotational": 2000
+    },
+    "sensors": [],
+    "mass": 100,    
+    "controller": "lib/finish_agent.so"
+}
