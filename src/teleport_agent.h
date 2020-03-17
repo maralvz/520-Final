@@ -13,6 +13,7 @@ class teleportAgentController : public Process, public AgentInterface {
     teleportAgentController() : Process(), AgentInterface() {}
 
     void init() {
+        // Object just there so that it can transport the user-controlled robot "downstairs"
         notice_collisions_with("userRobot", [&](Event e) {
             emit(Event("transport"));
         });

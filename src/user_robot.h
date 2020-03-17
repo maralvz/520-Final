@@ -13,13 +13,19 @@ class userRobotController : public Process, public AgentInterface {
     userRobotController() : Process(), AgentInterface() {}
 
     void init() {
+        // When the auto-bot beats the user and emits the "grounded" event,
+        // the user_robot hears it and teleports the user to the ground spot
         watch("grounded", [&](Event e) {
             label("I'm grounded", 10, 0);
             teleport(-305, 320, 0);
         });
+        // similar functionality as grounded, just that now the bot is moved from
+        // one maze to another
         watch("transport", [&](Event e) {
             teleport(-305, 320, 0);
         });
+        // If the user makes it fast and before the auto-bot,
+        // then the user bot can claim that it is safe!
         watch("madeit", [&](Event e) {
             label("I'm safe", -10, 10);
         });

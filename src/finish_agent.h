@@ -11,6 +11,7 @@ class finishAgentController : public Process, public AgentInterface {
     finishAgentController() : Process(), AgentInterface() {}
 
     void init() {
+        // Only function. Object there just to detect whether the user got there in time or not
         notice_collisions_with("userRobot", [&](Event e) {
             emit(Event("madeit"));
         });

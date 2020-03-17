@@ -14,12 +14,15 @@ namespace {
         public:
         void entry(const Event& e) {}
         void during() {
+            // If auto-bot gets to the final destination before the user, the event is sent 
+            // so that the user_robot gets "grounded"
             cpVect pos = position();
             double xCoord = pos.x;
             double yCoord = pos.y;
             if (xCoord > 300 && yCoord > -40 ) {
                 emit(Event("grounded"));
             }
+            // Normal forward movement of the robot under normal conditions
             track_velocity(15,0);
             if (sensor_value(0) < 30 || sensor_value(1) < 15 || sensor_value(2) < 15) {
                 emit(Event(ring));
@@ -39,6 +42,8 @@ namespace {
             rotVelb = -2;
         }
         void during() {
+            // should it happen that both sensor values are exactly the same, stop
+            // moving. All else, rotate depending on the space available.
             if (sensor_value(1) == sensor_value(2)) {
                 track_velocity(0,0);
             }
